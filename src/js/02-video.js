@@ -21,7 +21,7 @@ const onPlay = function(data) {
 player.on('timeupdate', throttle(onPlay,1000));
 
 function refresh(){
-    if(JSON.parse(localStorage.getItem(TIME_KEY))['seconds']===null){
+    if(JSON.parse(localStorage.getItem(TIME_KEY))===null){
         return;
     }
     const pausedTime = JSON.parse(localStorage.getItem(TIME_KEY))['seconds'];
