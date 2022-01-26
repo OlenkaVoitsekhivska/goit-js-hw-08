@@ -1,7 +1,7 @@
 import '../css/common.css';
 
 import Player from '@vimeo/player';
-import { typedarrays } from 'caniuse-lite/data/features';
+
 import { throttle } from 'lodash';
 
 const TIME_KEY = "videoplayer-current-time";
@@ -21,6 +21,9 @@ const onPlay = function(data) {
 player.on('timeupdate', throttle(onPlay,1000));
 
 function refresh(){
+    if(JSON.parse(localStorage.getItem(TIME_KEY))['seconds']===null){
+        return;
+    }
     const pausedTime = JSON.parse(localStorage.getItem(TIME_KEY))['seconds'];
 
     if(pausedTime){
